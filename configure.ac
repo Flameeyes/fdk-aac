@@ -11,7 +11,17 @@ AC_CONFIG_HEADERS([config.h])
 # Cross compiling support
 AC_CANONICAL_HOST
 
+# Various options for configure
+AC_ARG_ENABLE([example],
+            [AS_HELP_STRING([--enable-example],
+                [enable example encoding program (default is no)])],
+            [example=$enableval], [example=no])
+
+# Automake conditionals to set
+AM_CONDITIONAL(EXAMPLE, test x$example = xyes)
+
 # Checks for programs.
+AC_PROG_CC
 AC_PROG_CXX
 
 # Setup for libtool
